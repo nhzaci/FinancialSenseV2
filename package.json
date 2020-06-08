@@ -1,0 +1,21 @@
+{
+  "name": "FinancialSense",
+  "version": "1.0.0",
+  "description": "A financial tracker with beautiful dashboards aimed to help users get their finances on track",
+  "author": "Zack",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt --port 8080",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@nuxtjs/auth": "^4.9.1",
+    "@nuxtjs/axios": "^5.11.0",
+    "nuxt": "^2.0.0"
+  },
+  "devDependencies": {
+    "@nuxtjs/vuetify": "^1.0.0"
+  }
+}

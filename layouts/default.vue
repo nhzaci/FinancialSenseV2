@@ -1,0 +1,38 @@
+<template>
+  <v-app
+    light
+    app
+  >
+    <NavBar />
+
+    <!-- TODO: If logged in and on desktop -->
+    <NavDrawer v-if="$vuetify.breakpoint.mdAndUp && loggedIn" />
+    <!-- TODO: If logged in for mobile -->
+    <NavModal v-if="$vuetify.breakpoint.smAndDown" />
+
+    <v-content height="100%" style="background: #1f4287">
+      <nuxt />
+    </v-content>
+  </v-app>
+</template>
+
+<script>
+import { mapState } from 'vuex'
+
+import Modal from '@/components/app/Modal'
+import NavBar from '@/components/app/NavBar'
+import NavDrawer from '@/components/app/NavDrawer'
+
+export default {
+  computed: {
+    ...mapState({
+      loggedIn: state => state.loggedIn
+    })
+  },
+  components: {
+    NavBar,
+    NavDrawer,
+    Modal
+  }
+}
+</script>
