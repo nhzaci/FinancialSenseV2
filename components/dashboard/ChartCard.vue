@@ -43,6 +43,7 @@
           :value="value"
           :labels="label"
           :height="chartHeight"
+          auto-draw
         >
         </v-sparkline>
       </v-sheet>
@@ -64,7 +65,7 @@
     },
     computed: {
       breakpoint() {
-        return isHydrated ? this.$vuetify.breakpoint : {mdAndUp: true}
+        return this.isHydrated ? this.$vuetify.breakpoint : {mdAndUp: true}
       },
       titleClass() {
         if (this.breakpoint.mdAndUp) {

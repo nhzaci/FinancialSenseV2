@@ -76,13 +76,6 @@
   import OverviewCard from '@/components/dashboard/OverviewCard'
 
   export default {
-    data: () => ({
-      months: ['Jan 2020', 'Feb 2020', 'Mar 2020', 'Apr 2020', 'May 2020', 'Jun 2020', 'Jul 2020', 'Aug 2020'],
-      isHydrated: false
-    }),
-    mounted() {
-      this.isHydrated = true
-    },
     components: {
       ChartCard,
       OverviewCard
@@ -119,6 +112,13 @@
           return '100'
         }
       }
+    },
+    data: () => ({
+      months: ['Jan 2020', 'Feb 2020', 'Mar 2020', 'Apr 2020', 'May 2020', 'Jun 2020', 'Jul 2020', 'Aug 2020'],
+      isHydrated: false
+    }),
+    mounted() {
+      this.isHydrated = true
     }
   }
 </script>

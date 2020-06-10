@@ -13,7 +13,7 @@
     <!-- Title here -->
     <v-icon large class="mx-2">mdi-trending-up</v-icon>
     <v-toolbar-title class="font-weight-bold" style="font-size:30px;">
-        FinancialSense
+      FinancialSense
     </v-toolbar-title>
 
     <v-spacer></v-spacer>
@@ -59,7 +59,7 @@
         </v-tooltip>
         <v-tooltip bottom>
             <template v-slot:activator="{ on }">
-                <v-btn icon v-on="on" @click="setLoggedIn(false)" to="/">
+                <v-btn icon v-on="on" @click="logout" to="/">
                     <v-icon large>
                         mdi-logout
                     </v-icon>
@@ -71,7 +71,7 @@
       
       <!-- End Icons Unauthenticated -->
       <!-- Home, About, Login -->
-      <div v-else>
+      <div v-if="!loggedIn">
         <v-btn
           text
           v-for="(route, i) in unauthRoutes"
@@ -105,7 +105,11 @@ export default {
   methods: {
     ...mapMutations({
       setLoggedIn: 'setLoggedIn'
-    })
+    }),
+    logout() {
+      this.setLoggedIn(false)
+      location.reload()
+    }
   },
   data: () => ({
     unauthRoutes: [

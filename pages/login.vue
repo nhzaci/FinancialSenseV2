@@ -35,10 +35,10 @@
           <v-card-actions>
             <v-btn
               color="accent"
+              @click="login"
               to="/dashboard"
               class="ma-3"
               tile
-              @click="setLoggedIn(true)"
             >
               Login
             </v-btn>
@@ -60,13 +60,11 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
-
 export default {
   methods: {
-    ...mapMutations({
-      setLoggedIn: 'setLoggedIn'
-    })
+    login() {
+      this.$store.commit('setLoggedIn', true)
+    }
   }
 }
 </script>
