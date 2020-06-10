@@ -56,25 +56,32 @@
       value: [12, 44, 75, 200, 132, 100, 140, 210],
       label: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
       title: 'Balance',
-      categories: ['Balance', 'Income', 'Expense']
+      categories: ['Balance', 'Income', 'Expense'],
+      isHydrated: false
     }),
+    mounted() {
+      this.isHydrated = true
+    },
     computed: {
+      breakpoint() {
+        return isHydrated ? this.$vuetify.breakpoint : {mdAndUp: true}
+      },
       titleClass() {
-        if (this.$vuetify.breakpoint.mdAndUp) {
+        if (this.breakpoint.mdAndUp) {
           return 'display-1'
         } else {
           return 'headline'
         }
       },
       chartHeight() {
-        if (this.$vuetify.breakpoint.mdAndUp) {
+        if (this.breakpoint.mdAndUp) {
           return '75'
         } else {
           return '150'
         }
       },
       subtitleClass() {
-        if (this.$vuetify.breakpoint.mdAndUp) {
+        if (this.breakpoint.mdAndUp) {
           return 'headline'
         } else {
           return 'subtitle-1'

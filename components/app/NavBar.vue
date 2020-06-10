@@ -8,7 +8,7 @@
   >
 
     <!-- Used to center title on small devices -->
-    <v-spacer v-if="$vuetify.breakpoint.smAndDown"></v-spacer>
+    <v-spacer v-if="breakpoint.smAndDown"></v-spacer>
 
     <!-- Title here -->
     <v-icon large class="mx-2">mdi-trending-up</v-icon>
@@ -19,7 +19,7 @@
     <v-spacer></v-spacer>
 
     <!-- End icons only visible on md and up -->
-    <div v-if="$vuetify.breakpoint.mdAndUp">
+    <div v-if="breakpoint.mdAndUp">
       <!-- End Icons Authenticated -->
       <!-- User Profile, settings, favourites -->
       <div v-if="loggedIn">
@@ -92,7 +92,15 @@ export default {
   computed: {
     ...mapState({
       loggedIn: state => state.loggedIn
-    })
+    }),
+    breakpoint() {
+      return this.isHydrated ? 
+        this.$vuetify.breakpoint : 
+        { 
+          mdAndUp: true, 
+          smAndDown: false
+        }
+    }
   },
   methods: {
     ...mapMutations({
@@ -106,8 +114,12 @@ export default {
       //{ title: 'Contact Us', to: '/contact' }, // TODO
       { title: 'Login', to: '/login' },
       { title: 'Register', to: '/register' }
-    ]
-  })
+    ],
+    isHydrated: false
+  }),
+  mounted() {
+    this.isHydrated = true
+  }
 }
 </script>
 

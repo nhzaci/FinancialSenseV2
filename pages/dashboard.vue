@@ -77,36 +77,43 @@
 
   export default {
     data: () => ({
-      months: ['Jan 2020', 'Feb 2020', 'Mar 2020', 'Apr 2020', 'May 2020', 'Jun 2020', 'Jul 2020', 'Aug 2020']
+      months: ['Jan 2020', 'Feb 2020', 'Mar 2020', 'Apr 2020', 'May 2020', 'Jun 2020', 'Jul 2020', 'Aug 2020'],
+      isHydrated: false
     }),
+    mounted() {
+      this.isHydrated = true
+    },
     components: {
       ChartCard,
       OverviewCard
     },
     computed: {
+      breakpoint() {
+        return this.isHydrated ? this.$vuetify.breakpoint : {mdAndUp: true}
+      },
       titleClass() {
-        if (this.$vuetify.breakpoint.mdAndUp) {
+        if (this.breakpoint.mdAndUp) {
           return 'display-2'
         } else {
           return 'headline'
         }
       },
       subtitleClass() {
-        if (this.$vuetify.breakpoint.mdAndUp) {
+        if (this.breakpoint.mdAndUp) {
           return 'headline'
         } else {
           return 'subtitle-1'
         }
       },
       ringWidth() {
-        if (this.$vuetify.breakpoint.mdAndUp) {
+        if (this.breakpoint.mdAndUp) {
           return '20'
         } else {
           return '10'
         }
       },
       ringSize() {
-        if (this.$vuetify.breakpoint.mdAndUp) {
+        if (this.breakpoint.mdAndUp) {
           return '150'
         } else {
           return '100'

@@ -106,18 +106,25 @@
 
 export default {
   data: () => ({
-    carousel: ['dashboard1.png', 'dashboard2.png']
+    carousel: ['dashboard1.png', 'dashboard2.png'],
+    isHydrated: false
   }),
+  mounted() {
+    this.isHydrated = true
+  },
   computed: {
+    breakpoint() {
+      return this.isHydrated ? this.$vuetify.breakpoint : {mdAndUp: true}
+    },
     titleClass() {
-      if (this.$vuetify.breakpoint.mdAndUp) {
+      if (this.breakpoint.mdAndUp) {
         return 'display-2'
       } else {
         return 'headline'
       }
     },
     subtitleClass() {
-      if (this.$vuetify.breakpoint.mdAndUp) {
+      if (this.breakpoint.mdAndUp) {
         return 'headline'
       } else {
         return 'subtitle-1'
